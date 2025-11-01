@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import VehicleInfoForm from './components/VehicleInfoForm';
@@ -10,7 +10,7 @@ import FormProgressIndicator from './components/FormProgressIndicator';
 import PricingSuggestions from './components/PricingSuggestions';
 
 const CreateTeslaListing = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     model: '',
@@ -36,9 +36,9 @@ const CreateTeslaListing = () => {
     const user = localStorage.getItem('tesla_user');
     if (!user) {
       sessionStorage.setItem('tesla_redirect_after_auth', '/create-tesla-listing');
-      router?.push('/authentication-portal');
+      navigate('/authentication-portal');
     }
-  }, [router]);
+  }, [navigate]);
 
   // Load draft from localStorage
   useEffect(() => {
@@ -185,7 +185,7 @@ const CreateTeslaListing = () => {
       
       // Show success and redirect
       alert('Listing published successfully!');
-      router?.push('/user-profile-dashboard');
+      navigate('/user-profile-dashboard');
       
     } catch (error) {
       console.error('Error publishing listing:', error);
@@ -226,7 +226,7 @@ const CreateTeslaListing = () => {
             <div className="flex items-center space-x-4">
               <Button
                 variant="ghost"
-                onClick={() => router?.push('/user-profile-dashboard')}
+                onClick={() => navigate('/user-profile-dashboard')}
                 iconName="ArrowLeft"
                 iconPosition="left"
               >

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import ImageGallery from './components/ImageGallery';
@@ -10,7 +10,7 @@ import ContactForm from './components/ContactForm';
 import PriceSection from './components/PriceSection';
 
 const TeslaOfferDetails = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -119,7 +119,7 @@ const TeslaOfferDetails = () => {
 
   const handleAuthRequired = () => {
     sessionStorage.setItem('tesla_redirect_after_auth', window.location?.pathname);
-    router?.push('/authentication-portal');
+    navigate('/authentication-portal');
   };
 
   const handleContactSeller = () => {
@@ -185,7 +185,7 @@ const TeslaOfferDetails = () => {
   };
 
   const handleBackToMarketplace = () => {
-    router?.push('/tesla-marketplace-home');
+    navigate('/tesla-marketplace-home');
   };
 
   if (isLoading) {

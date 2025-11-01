@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
 
 const ProfileHeader = ({ user, isOwnProfile = false, onEditProfile = () => {} }) => {
-  const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEditClick = () => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import ProfileHeader from './components/ProfileHeader';
@@ -10,7 +10,7 @@ import AnalyticsWidget from './components/AnalyticsWidget';
 import TabNavigation from './components/TabNavigation';
 
 const UserProfileDashboard = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('listings');
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
@@ -272,11 +272,11 @@ const UserProfileDashboard = () => {
   };
 
   const handleCreateListing = () => {
-    router?.push('/create-tesla-listing');
+    navigate('/create-tesla-listing');
   };
 
   const handleEditListing = (listingId) => {
-    router?.push(`/create-tesla-listing?edit=${listingId}`);
+    navigate(`/create-tesla-listing?edit=${listingId}`);
   };
 
   const handleDeleteListing = (listingId) => {
@@ -443,7 +443,7 @@ const UserProfileDashboard = () => {
                     </p>
                     <Button
                       variant="outline"
-                      onClick={() => router?.push('/tesla-marketplace-home')}
+                      onClick={() => navigate('/tesla-marketplace-home')}
                       iconName="Car"
                       iconPosition="left"
                     >
@@ -488,7 +488,7 @@ const UserProfileDashboard = () => {
                     </p>
                     <Button
                       variant="outline"
-                      onClick={() => router?.push('/tesla-marketplace-home')}
+                      onClick={() => navigate('/tesla-marketplace-home')}
                       iconName="Search"
                       iconPosition="left"
                     >

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
 
 const ListingCard = ({ listing, onEdit = () => {}, onDelete = () => {}, onPromote = () => {} }) => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [showActions, setShowActions] = useState(false);
 
   const getStatusColor = (status) => {
@@ -42,11 +42,11 @@ const ListingCard = ({ listing, onEdit = () => {}, onDelete = () => {}, onPromot
   };
 
   const handleViewDetails = () => {
-    router?.push(`/tesla-offer-details?id=${listing?.id}`);
+    navigate(`/tesla-offer-details?id=${listing?.id}`);
   };
 
   const handleEdit = () => {
-    router?.push(`/create-tesla-listing?edit=${listing?.id}`);
+    navigate(`/create-tesla-listing?edit=${listing?.id}`);
     onEdit(listing?.id);
   };
 
