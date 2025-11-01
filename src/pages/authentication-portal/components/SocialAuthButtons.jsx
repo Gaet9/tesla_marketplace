@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Icon from '../../../components/AppIcon';
 
 const SocialAuthButtons = ({ onSocialAuth, isLoading }) => {
@@ -11,10 +10,10 @@ const SocialAuthButtons = ({ onSocialAuth, isLoading }) => {
       color: 'bg-white text-gray-900 hover:bg-gray-50 border border-gray-300'
     },
     {
-      id: 'github',
-      name: 'GitHub',
-      icon: 'Github',
-      color: 'bg-gray-900 text-white hover:bg-gray-800'
+      id: 'facebook',
+      name: 'Facebook', 
+      icon: 'Facebook',
+      color: 'bg-blue-600 text-white hover:bg-blue-700'
     }
   ];
 
@@ -32,9 +31,9 @@ const SocialAuthButtons = ({ onSocialAuth, isLoading }) => {
         {socialProviders?.map((provider) => (
           <button
             key={provider?.id}
-            onClick={() => onSocialAuth(provider?.id)}
+            onClick={() => onSocialAuth?.(provider?.id)}
             disabled={isLoading}
-            className={`flex items-center justify-center space-x-2 py-3 px-4 rounded-lg tesla-transition ${provider?.color} disabled:opacity-50`}
+            className={`flex items-center justify-center space-x-2 py-3 px-4 rounded-lg tesla-transition ${provider?.color} disabled:opacity-50 disabled:cursor-not-allowed`}
           >
             <Icon name={provider?.icon} size={18} />
             <span className="font-medium">{provider?.name}</span>
@@ -43,7 +42,7 @@ const SocialAuthButtons = ({ onSocialAuth, isLoading }) => {
       </div>
       <div className="flex items-center justify-center space-x-2 text-xs text-muted-foreground">
         <Icon name="Shield" size={14} />
-        <span>Secured with SSL encryption</span>
+        <span>Secured with OAuth 2.0 encryption</span>
       </div>
     </div>
   );

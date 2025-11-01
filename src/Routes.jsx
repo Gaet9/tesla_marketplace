@@ -9,6 +9,7 @@ import TeslaMarketplaceHome from './pages/tesla-marketplace-home';
 import TeslaOfferDetails from './pages/tesla-offer-details';
 import AuthenticationPortal from './pages/authentication-portal';
 import CreateTeslaListing from './pages/create-tesla-listing';
+import UpdateTeslaListing from './pages/update-tesla-listing';
 
 const Routes = () => {
   return (
@@ -24,6 +25,7 @@ const Routes = () => {
         <Route path="/tesla-offer-details" element={<TeslaOfferDetails />} />
         <Route path="/authentication-portal" element={<AuthenticationPortal />} />
         <Route path="/create-tesla-listing" element={<CreateTeslaListing />} />
+        <Route path="/update-tesla-listing/:id" element={<UpdateTeslaListing />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
       </ErrorBoundary>
